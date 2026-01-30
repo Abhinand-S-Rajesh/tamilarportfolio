@@ -12,10 +12,10 @@ const Footer = () => {
             <h3>Tamil Startup</h3>
             <p>Building innovative solutions for the future. Empowering businesses with cutting-edge technology and creative strategies.</p>
             <div className="social-links">
-              <a href="#" aria-label="Facebook"><FaFacebook /></a>
-              <a href="#" aria-label="Instagram"><FaInstagram /></a>
-              <a href="#" aria-label="LinkedIn"><FaLinkedin /></a>
-              <a href="#" aria-label="Twitter"><FaTwitter /></a>
+              <a href="https://www.linkedin.com/in/m-v-prabakar?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BNokiU6OcS%2B6t9%2FnvCmIXHA%3D%3D" aria-label="Facebook"><FaFacebook /></a>
+              <a href="https://www.linkedin.com/in/m-v-prabakar?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BNokiU6OcS%2B6t9%2FnvCmIXHA%3D%3D" aria-label="Instagram"><FaInstagram /></a>
+              <a href="https://www.linkedin.com/in/m-v-prabakar?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BNokiU6OcS%2B6t9%2FnvCmIXHA%3D%3D" aria-label="LinkedIn"><FaLinkedin /></a>
+              <a href="https://www.linkedin.com/in/m-v-prabakar?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BNokiU6OcS%2B6t9%2FnvCmIXHA%3D%3D" aria-label="Twitter"><FaTwitter /></a>
             </div>
           </div>
 
