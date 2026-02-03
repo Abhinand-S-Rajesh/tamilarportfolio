@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
+import emailjs from '@emailjs/browser';
 import './Contact.css';
 
 const Contact = () => {
+  const form = useRef();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
     message: ''
   });
+
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -19,10 +23,24 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! We will get back to you soon.');
-    setFormData({ name: '', email: '', phone: '', message: '' });
+    setLoading(true);
+    
+    // Replace these with your actual Service ID, Template ID, and Public Key
+    const SERVICE_ID = 'service_uykrzhh';
+    const TEMPLATE_ID = 'template_c6jhq6i';
+    const PUBLIC_KEY = 'v-UPikycAYH0YeBtV';
+
+    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
+      .then((result) => {
+          console.log('SUCCESS!', result.status, result.text);
+          setLoading(false);
+          alert('Message sent successfully!');
+          setFormData({ name: '', email: '', phone: '', message: '' });
+      }, (error) => {
+          console.log('FAILED...', error);
+          setLoading(false);
+          alert(`Failed to send the message. Error: ${JSON.stringify(error)}`);
+      });
   };
 
   return (
@@ -45,7 +63,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4>Email</h4>
-                  <p>vijaypraba1985@gmail.com</p>
+                  <p>abhinandsrajesh16032004@gmail.com</p>
                 </div>
               </div>
               
@@ -55,7 +73,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4>Phone</h4>
-                  <p>+91 9500878965</p>
+                  <p>+91 8807363551</p>
                 </div>
               </div>
               
@@ -71,13 +89,13 @@ const Contact = () => {
             </div>
           </div>
           
-          <form className="contact-form" onSubmit={handleSubmit}>
+          <form ref={form} className="contact-form" onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="name">Name</label>
               <input
                 type="text"
                 id="name"
-                name="name"
+                name="name" // This name must match the variable in your EmailJS template (e.g., {{name}})
                 value={formData.name}
                 onChange={handleChange}
                 required
@@ -90,7 +108,7 @@ const Contact = () => {
               <input
                 type="email"
                 id="email"
-                name="email"
+                name="email" // Match {{email}}
                 value={formData.email}
                 onChange={handleChange}
                 required
@@ -103,10 +121,10 @@ const Contact = () => {
               <input
                 type="tel"
                 id="phone"
-                name="phone"
+                name="phone" // Match {{phone}}
                 value={formData.phone}
                 onChange={handleChange}
-                placeholder="+91 123 456 7890"
+                placeholder="+91 8807363551"
               />
             </div>
             
@@ -114,7 +132,7 @@ const Contact = () => {
               <label htmlFor="message">Message</label>
               <textarea
                 id="message"
-                name="message"
+                name="message" // Match {{message}}
                 value={formData.message}
                 onChange={handleChange}
                 required
@@ -123,8 +141,8 @@ const Contact = () => {
               ></textarea>
             </div>
             
-            <button type="submit" className="btn btn-primary">
-              Send Message
+            <button type="submit" className="btn btn-primary" disabled={loading}>
+              {loading ? 'Sending...' : 'Send Message'}
             </button>
           </form>
         </div>

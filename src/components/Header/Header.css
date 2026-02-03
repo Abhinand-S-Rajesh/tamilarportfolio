@@ -35,15 +35,15 @@
 }
 
 .logo-img {
-  height: 60px;
-  /* Refined size */
-  width: auto;
+  height: 100px;   /* increase this value */
+  width: auto;     /* keeps proportions correct */
   object-fit: contain;
   transition: transform 0.4s ease;
 }
 
+
 .header.scrolled .logo-img {
-  height: 50px;
+  height: 100px;
 }
 
 .logo:hover .logo-img {
