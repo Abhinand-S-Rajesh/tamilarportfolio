@@ -1,0 +1,97 @@
+.album-page {
+    padding: 0;
+    min-height: 100vh;
+    background-color: #000;
+    /* Dark background looks better for this effect */
+    overflow-x: hidden;
+}
+
+.album-header {
+    padding: 40px 20px;
+    text-align: center;
+    background: white;
+    margin-bottom: 0;
+}
+
+.album-page h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.album-subtitle {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.album-grid {
+    /* Use columns for a masonry/pinterest style layout that respects aspect ratio */
+    column-count: 2;
+    column-gap: 0;
+    width: 100%;
+    padding: 0;
+}
+
+/* Tablet */
+@media (min-width: 600px) {
+    .album-grid {
+        column-count: 3;
+    }
+}
+
+/* Laptop/Desktop */
+@media (min-width: 1024px) {
+    .album-grid {
+        column-count: 5;
+    }
+}
+
+@media (min-width: 1440px) {
+    .album-grid {
+        column-count: 6;
+    }
+}
+
+.album-item {
+    position: relative;
+    overflow: hidden;
+    break-inside: avoid;
+    /* Prevents item from splitting across columns */
+    margin-bottom: 0;
+    /* Tightly packed */
+    cursor: pointer;
+    transition: transform 0.3s ease, z-index 0s ease;
+    /* z-index needs to snap */
+}
+
+.image-wrapper {
+    width: 100%;
+    /* Height is auto to respect image ratio */
+    display: block;
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: auto;
+    /* Maintains original aspect ratio */
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.overlay {
+    display: none;
+}
+
+/* 
+  HOVER EFFECTS 
+  Only enlarge the current one. No dimming of others.
+*/
+
+.album-item:hover {
+    transform: scale(1.15);
+    /* Enlarge */
+    z-index: 100;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    outline: 1px solid rgba(255, 255, 255, 0.5);
+    /* Subtle highlighting */
+}

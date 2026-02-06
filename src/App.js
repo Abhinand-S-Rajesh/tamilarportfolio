@@ -4,6 +4,8 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Home from './pages/Home';
 import Founder from './pages/Founder';
+import TamilarStartup from './pages/TamilarStartup'; // Re-import
+import Album from './pages/Album';
 import './App.css';
 
 const ScrollToTop = () => {
@@ -26,8 +28,10 @@ function App() {
         <ScrollToTop />
         <Header />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/founder" element={<Founder />} />
+          <Route path="/" element={<Founder />} />
+          <Route path="/tamilar-startup" element={<TamilarStartup />} />
+          <Route path="/album" element={<Album />} />
+          <Route path="/old-home" element={<Home />} />
         </Routes>
         <Footer />
       </div>
